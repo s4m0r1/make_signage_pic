@@ -1,5 +1,11 @@
 from PIL import Image, ImageDraw, ImageFont
 
+# フォント設定
+yasasisa = './font/yasasisa.ttf'
+
+# 出力
+save_src = './test_make/pillow_imagedraw.jpg'
+
 # 背景作成
 im = Image.new('RGB', (1280, 720), (255, 255, 255))
 # 絵をかけるように引き渡す
@@ -27,14 +33,14 @@ draw.ellipse((250, 400, 360, 510), fill=(255, 255, 255), outline=(255, 0, 51))
 
 
 # フォント設定
-title_font = ImageFont.truetype('./img/font/yasasisa.ttf', 128)
-sub_title_font = ImageFont.truetype('./img/font/yasasisa.ttf', 72)
-eng_title_font = ImageFont.truetype('./img/font/yasasisa.ttf', 52)
-time_title_font = ImageFont.truetype('./img/font/yasasisa.ttf', 45)
-infomation = ImageFont.truetype('./img/font/yasasisa.ttf', 62)
-eng_infomation = ImageFont.truetype('./img/font/yasasisa.ttf', 32)
-genin = ImageFont.truetype('./img/font/yasasisa.ttf', 45)
-genin_infomation = ImageFont.truetype('./img/font/yasasisa.ttf', 32)
+title_font = ImageFont.truetype(yasasisa, 128)
+sub_title_font = ImageFont.truetype(yasasisa, 72)
+eng_title_font = ImageFont.truetype(yasasisa, 52)
+time_title_font = ImageFont.truetype(yasasisa, 45)
+infomation = ImageFont.truetype(yasasisa, 62)
+eng_infomation = ImageFont.truetype(yasasisa, 32)
+genin = ImageFont.truetype(yasasisa, 45)
+genin_infomation = ImageFont.truetype(yasasisa, 32)
 
 # 文字配置
 draw.multiline_text((250,30), 'ラボ回線', fill=(0, 0, 0), font=title_font)
@@ -49,4 +55,4 @@ draw.multiline_text((400,610), 'パケットループ検知', fill=(0, 0, 0), fo
 
 
 # 図形のセーブ
-im.save('./img/pillow_imagedraw.jpg', quality=100)
+im.save(save_src, quality=100)
