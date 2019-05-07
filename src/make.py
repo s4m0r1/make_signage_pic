@@ -1,11 +1,12 @@
 from PIL import Image, ImageDraw, ImageFont
 import datetime
 import logging
+import os
 from logging import getLogger, StreamHandler, Formatter
 
 # コンフィグを書くまだ動いてない
-FONT_DIR = "./font/"
-SAVE_SRC = "./test_make/"
+FONT_DIR = "font/"
+SAVE_SRC = "test_make/"
 # LOG = True
 # LOGGER_LEVEL = "DEBUG"
 # 画像作成関数化
@@ -46,6 +47,9 @@ def check_config():
         logging.error("No Set Save Source!Your Check \"SAVE_SRC\"")
         exit()
 
+def get_dir():
+    path = os.path.dirname(__file__)
+    return path[:-3]
 
 # def set_logger():
 #     # loggerで受け取るレベル設定
@@ -53,11 +57,11 @@ def check_config():
 #     pass
 
 
-def make_pic():
+def make_pic(path):
     # フォント設定
-    yasasisa = FONT_DIR + FONT
+    set_font = path + FONT_DIR + FONT
     # 出力
-    save_src = SAVE_SRC + str(datetime.datetime.utcnow()) + ".png"
+    save_src = path + SAVE_SRC + str(datetime.datetime.utcnow()) + ".png"
     
     # 背景作成
     im = Image.new('RGB', (1280, 720), (255, 255, 255))
@@ -86,14 +90,14 @@ def make_pic():
         draw.line((350, 500, 250, 400), fill=(255, 0, 0), width=23)
     
     # フォント設定
-    title_font = ImageFont.truetype(yasasisa, 128)
-    sub_title_font = ImageFont.truetype(yasasisa, 72)
-    eng_title_font = ImageFont.truetype(yasasisa, 52)
-    time_title_font = ImageFont.truetype(yasasisa, 45)
-    infomation = ImageFont.truetype(yasasisa, 62)
-    eng_infomation = ImageFont.truetype(yasasisa, 32)
-    genin = ImageFont.truetype(yasasisa, 45)
-    genin_infomation = ImageFont.truetype(yasasisa, 32)
+    title_font = ImageFont.truetype(set_font, 128)
+    sub_title_font = ImageFont.truetype(set_font, 72)
+    eng_title_font = ImageFont.truetype(set_font, 52)
+    time_title_font = ImageFont.truetype(set_font, 45)
+    infomation = ImageFont.truetype(set_font, 62)
+    eng_infomation = ImageFont.truetype(set_font, 32)
+    genin = ImageFont.truetype(set_font, 45)
+    genin_infomation = ImageFont.truetype(set_font, 32)
 
     # 文字配置
     draw.multiline_text((250,30), LAN_NAME, fill=(0, 0, 0), font=title_font)
@@ -111,7 +115,8 @@ def make_pic():
 
 def main():
     check_config()
-    save_point = make_pic()
+    path = get_dir()
+    save_point = make_pic(path)
     print(save_point)
     print("Done!")
 
