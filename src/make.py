@@ -13,6 +13,18 @@ SAVE_SRC = "./test_make/"
 # 作成する画像コンフィグ
 FONT = "yasasisa.ttf"
 COLLOR = 153,51,255
+LAN_NAME = "テスト用"
+IP_ADDR = "192系"
+HOST_NAME = "テスト用回線"
+LEVEL = "INFO"
+TIME = "16:04"
+LEVEL_PING = "疎通不可"
+LEVEL_PING_ENG = "Failed Get HOST Status"
+LEVEL_INFO = "原因不明"
+
+"""labo
+FONT = "yasasisa.ttf"
+COLLOR = 153,51,255
 LAN_NAME = "LAB回線"
 IP_ADDR = "172系"
 HOST_NAME = "BlueRose管理区"
@@ -21,7 +33,7 @@ TIME = "16:04"
 LEVEL_PING = "疎通不可"
 LEVEL_PING_ENG = "BAD PING 1.1.1.1"
 LEVEL_INFO = "原因不明"
-
+"""
 
 def check_config():
     # if LOG:

@@ -3,3 +3,4 @@ font/
 *.jpg
 .vscode/
 test_pic/
+!media/Test_Pic.png
