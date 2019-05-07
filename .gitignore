@@ -1,0 +1,5 @@
+font/
+*.png
+*.jpg
+.vscode/
+test_pic/
