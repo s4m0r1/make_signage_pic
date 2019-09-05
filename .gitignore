@@ -1,6 +1,8 @@
 font/
-*.png
-*.jpg
 .vscode/
 test_pic/
+venv/
+.env
 !media/Test_Pic.png
+*.png
+*.jpg
