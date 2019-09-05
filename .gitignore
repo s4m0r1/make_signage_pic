@@ -4,3 +4,4 @@ font/
 .vscode/
 test_pic/
 !media/Test_Pic.png
+/venv/
