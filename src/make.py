@@ -1,13 +1,9 @@
 from PIL import Image, ImageDraw, ImageFont
 import datetime
-import logging
-from logging import getLogger, StreamHandler, Formatter
 
 # コンフィグを書くまだ動いてない
 FONT_DIR = "./font/"
 SAVE_SRC = "./test_make/"
-# LOG = True
-# LOGGER_LEVEL = "DEBUG"
 # 画像作成関数化
 
 # 作成する画像コンフィグ
@@ -22,35 +18,20 @@ LEVEL_PING = "疎通不可"
 LEVEL_PING_ENG = "Failed Get HOST Status"
 LEVEL_INFO = "原因不明"
 
-"""labo
-FONT = "yasasisa.ttf"
-COLLOR = 153,51,255
-LAN_NAME = "LAB回線"
-IP_ADDR = "172系"
-HOST_NAME = "BlueRose管理区"
-LEVEL = "INFO"
-TIME = "16:04"
-LEVEL_PING = "疎通不可"
-LEVEL_PING_ENG = "BAD PING 1.1.1.1"
-LEVEL_INFO = "原因不明"
-"""
+def main():
+    check_config()
+    save_point = make_pic()
+    print(save_point)
+    print("Done!")
+
 
 def check_config():
-    # if LOG:
-    #     set_logger()
-    #     logging.info("Save Log")
     if FONT_DIR == "":
         logging.error("No Set Font! Your Check \"FONT_DIR\"")
         exit()
     if SAVE_SRC == "":
         logging.error("No Set Save Source!Your Check \"SAVE_SRC\"")
         exit()
-
-
-# def set_logger():
-#     # loggerで受け取るレベル設定
-#     # ハンドラで受け取るレベル設定
-#     pass
 
 
 def make_pic():
@@ -107,13 +88,6 @@ def make_pic():
     # 図形のセーブ
     im.save(save_src, quality=100)
     return save_src
-
-
-def main():
-    check_config()
-    save_point = make_pic()
-    print(save_point)
-    print("Done!")
 
 
 if __name__ == "__main__":
