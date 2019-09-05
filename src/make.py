@@ -1,37 +1,33 @@
 from PIL import Image, ImageDraw, ImageFont
 import datetime
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 
-# コンフィグを書くまだ動いてない
-FONT_DIR = "./font/"
-SAVE_SRC = "./test_make/"
-# 画像作成関数化
+# 環境変数読み込み
+dotenv_path = join(dirname(__file__), '../.env')
+load_dotenv(dotenv_path)
 
-# 作成する画像コンフィグ
-FONT = "yasasisa.ttf"
-COLLOR = 153,51,255
-LAN_NAME = "テスト用"
-IP_ADDR = "192系"
-HOST_NAME = "テスト用回線"
-LEVEL = "INFO"
-TIME = "16:04"
-LEVEL_PING = "疎通不可"
-LEVEL_PING_ENG = "Failed Get HOST Status"
-LEVEL_INFO = "原因不明"
+FONT_DIR = os.environ.get("FONT_DIR")
+SAVE_SRC = os.environ.get("SAVE_SRC")
+FONT = os.environ.get("FONT")
+R = int(os.environ.get("R"))
+G = int(os.environ.get("G"))
+B = int(os.environ.get("B"))
+LAN_NAME = os.environ.get("LAN_NAME")
+IP_ADDR = os.environ.get("IP_ADDR")
+HOST_NAME = os.environ.get("HOST_NAME")
+LEVEL = os.environ.get("LEVEL")
+TIME = os.environ.get("TIME")
+LEVEL_PING = os.environ.get("LEVEL_PING")
+LEVEL_PING_ENG = os.environ.get("LEVEL_PING_ENG")
+LEVEL_INFO = os.environ.get("LEVEL_INFO")
+
 
 def main():
-    check_config()
     save_point = make_pic()
     print(save_point)
     print("Done!")
-
-
-def check_config():
-    if FONT_DIR == "":
-        logging.error("No Set Font! Your Check \"FONT_DIR\"")
-        exit()
-    if SAVE_SRC == "":
-        logging.error("No Set Save Source!Your Check \"SAVE_SRC\"")
-        exit()
 
 
 def make_pic():
@@ -41,12 +37,11 @@ def make_pic():
     save_src = SAVE_SRC + str(datetime.datetime.utcnow()) + ".png"
     
     # 背景作成
-    im = Image.new('RGB', (1280, 720), (255, 255, 255))
+    im = Image.new("RGB", (1280, 720), (255, 255, 255))
     # 絵をかけるように引き渡す
     draw = ImageDraw.Draw(im)
-
     # 四角
-    draw.rectangle((0, 0, 200, 720), fill=(COLLOR), outline=(255, 255, 255))
+    draw.rectangle((0, 0, 200, 720), fill=(R,G,B), outline=(255, 255, 255))
 
     # 線
     draw.line((200, 350, 1280, 350), fill=(0, 0, 0), width=3)
